@@ -1,0 +1,31 @@
+server:
+  port: 8001
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/wxclass?characterEncoding=UTF-8&useUnicode=true&useSSL=false&tinyInt1isBit=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+
+    #上传文件总的最大值
+    servlet:
+      multipart:
+        max-request-size: 1000MB
+        #上传文件的最大值
+        max-file-size: 1000MB
+
+#配置mapper xml文件的路径
+mybatis-plus:
+  mapper-locations=classpath: mapper/*.xml
+  #mybatis日志
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#上传物理路径
+file:
+  upload:
+    path: D:/t4/wxclass-server/upfiles/
+    #虚拟路径
+    relative: /files/**
