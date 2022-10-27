@@ -2,10 +2,8 @@ package com.example.wxclassserver.mapper;
 
 import com.example.wxclassserver.model.Chapter;
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import com.example.wxclassserver.model.Course;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -41,12 +39,14 @@ public interface ChapterMapper {
     int getRecordCount(@Param("chapterName") String chapterName,@Param("courseId") Integer courseId);
 
 
-    @Insert("insert into chapter(name,course_id,info,video) value(#{chapter.name},#{chapter.name},#{chapter.course_id},#{chapter.info},#{chapter.video})")
+    @Insert("insert into chapter(name,course_id,info,video) value(#{chapter.name},#{chapter.courseId},#{chapter.info},#{chapter.video})")
     void add(@Param("chapter") Chapter chapter);
 
 
-    //
-    void update(Chapter chapter);
+    @Update("update chapter set name=#{chapter.name},course_id=#{chapter.courseId}," +
+            "info=#{chapter.info},video=#{chapter.video} where id=#{chapter.id}")
+    void update(@Param("chapter") Chapter chapter);
 
-    void delete(Integer id);
+    @Delete("delete from chapter where id=#{id}")
+    void delete(@Param("id") Integer id);
 }

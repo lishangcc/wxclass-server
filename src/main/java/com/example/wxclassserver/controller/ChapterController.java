@@ -2,6 +2,7 @@ package com.example.wxclassserver.controller;
 
 
 import com.example.wxclassserver.model.Chapter;
+import com.example.wxclassserver.model.Course;
 import com.example.wxclassserver.model.Pages;
 import com.example.wxclassserver.model.Response;
 import com.example.wxclassserver.service.ChapterService;
@@ -49,10 +50,23 @@ public class ChapterController {
     }
 
 
+    @RequestMapping("/add")
     public Response add(Chapter chapter){
         chapterService.add(chapter);
 
         return new Response(200,"success");
+    }
+
+    @GetMapping("/delete")
+    public void delete(Integer id){
+
+        chapterService.delete(id);
+    }
+
+    @GetMapping("/update")
+    public void update(Chapter chapter){
+
+        chapterService.update(chapter);
     }
 
 
