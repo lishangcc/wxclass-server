@@ -1,10 +1,5 @@
-/**
- * @Author Ls
- * @Date 2022/10/21 11:09
- * @Description ChapterService
- * @Version 1.0
- */
 package com.example.wxclassserver.service;
+
 
 import com.example.wxclassserver.mapper.ChapterMapper;
 import com.example.wxclassserver.model.Chapter;
@@ -14,6 +9,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * description: ChapterService <br>
+ * date: 2022-10-13 15:04 <br>
+ * author: DaTao <br>
+ * version: 1.0 <br>
+ */
 @Service
 public class ChapterService {
 
@@ -40,7 +41,7 @@ public class ChapterService {
             chapter.setStatusInfo(statusInfos[chapter.getStatus()]);
         }
 
-        int totalRecord = chapterMapper.getRecordCount(chapterName);
+        int totalRecord = chapterMapper.getRecordCount(chapterName,courseId);
 
         //计算总页数
         Integer totalPage = totalRecord%pageSize == 0 ? totalRecord/pageSize : totalRecord/pageSize + 1;
