@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.wxclassserver.mapper.GradeMapper">
+
+    <select id="selectAllGrade" resultType="com.example.wxclassserver.model.Grade">
+        select id, name, number, intro, charge, hot from grade;
+    </select>
+
+    <select id="selectHotGrade" resultType="com.example.wxclassserver.model.Grade">
+        select id, name, number, intro, charge, hot from grade where hot = 1;
+    </select>
+
+</mapper>
