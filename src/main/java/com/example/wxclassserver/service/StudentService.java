@@ -2,7 +2,7 @@ package com.example.wxclassserver.service;
 
 import com.example.wxclassserver.model.Student;
 import com.example.wxclassserver.mapper.StudentMapper;
-import com.sun.tools.javac.util.List;
+import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +22,7 @@ public class StudentService {
     }
 
     public int modStudentNameBySno(Student student) {
-        return studentMapper.modStudentNameBySno(student);
+        return studentMapper.modStudentBySno(student);
     }
 
     public int deleteStudentBySno(int sno){

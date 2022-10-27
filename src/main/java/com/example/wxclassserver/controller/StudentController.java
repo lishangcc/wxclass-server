@@ -2,7 +2,7 @@ package com.example.wxclassserver.controller;
 
 import com.example.wxclassserver.model.Student;
 import com.example.wxclassserver.service.StudentService;
-import com.sun.tools.javac.util.List;
+import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,13 +11,13 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.HashMap;
 import java.util.Map;
 
-@Controller("/student")
+@Controller
 public class StudentController {
 
     @Autowired
     private StudentService studentService;
     //查询所有学生
-    @RequestMapping("/getAll")
+    @RequestMapping("/getAllStudent")
     public List<Student> getAllStudent(){
         return studentService.getAllStudent();
     }
@@ -30,8 +30,8 @@ public class StudentController {
         return map;
     }
     //修改学生信息
-    @RequestMapping("/mod")
-    public Map<String, Object> modStudentNameBySno(Student student){
+    @RequestMapping("/modStudent")
+    public Map<String, Object> modStudentBySno(Student student){
         int i = studentService.modStudentNameBySno(student);
         Map<String,Object> map = new HashMap<>();
         if(i==1){
@@ -42,7 +42,7 @@ public class StudentController {
         return map;
     }
     //删除学生
-    @RequestMapping("/delete")
+    @RequestMapping("/deleteStudent")
     public Map<String,Object> deleteStudentBySno(Student student){
         HashMap<String, Object> map = new HashMap<>();
         int i = studentService.deleteStudentBySno(student.getSno());

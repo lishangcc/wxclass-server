@@ -39,7 +39,7 @@ public class CourseService {
             if(course.getAttribute().equals("1")){
                 course.setAttribute("公开课");
             }else if(course.getAttribute().equals("2")){
-                course.setAttribute("标准可");
+                course.setAttribute("标准课");
             }
         }
 
