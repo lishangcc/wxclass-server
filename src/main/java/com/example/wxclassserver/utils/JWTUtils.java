@@ -51,17 +51,17 @@ public class JWTUtils {
         return decodedJWT;
     }
 
-    public static void main(String[] args) {
-        Map<String,String> payload = new HashMap<>();
-        payload.put("name","xiaoming");
-        payload.put("mail","xiaoming@sina.com");
-
-        String token = getToken(payload);
-        System.out.println(token);
-
-        DecodedJWT decode = decode(token);
-        System.out.println(decode.getToken());
-        System.out.println(decode.getClaim("name").asString());
-        System.out.println(decode.getClaim("mail").asString());
-    }
+//    public static void main(String[] args) {
+//        Map<String,String> payload = new HashMap<>();
+//        payload.put("name","xiaoming");
+//        payload.put("mail","xiaoming@sina.com");
+//
+//        String token = getToken(payload);
+//        System.out.println(token);
+//
+//        DecodedJWT decode = decode(token);
+//        System.out.println(decode.getToken());
+//        System.out.println(decode.getClaim("name").asString());
+//        System.out.println(decode.getClaim("mail").asString());
+//    }
 }
