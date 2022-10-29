@@ -41,6 +41,12 @@ public class ChapterController {
     @Value("${file.upload.relative}")
     private String fileRelativePath;
 
+    @GetMapping("/list")
+    public List<Chapter> list(Integer courseId){
+
+        List<Chapter> list = chapterService.list(courseId);
+        return list;
+    }
 
     @GetMapping("/getPage")
     public Pages<Chapter> getPage(Integer pageIndex, Integer pageSize, Integer courseId, String chapterName){

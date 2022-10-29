@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/course")
@@ -43,6 +44,14 @@ public class CourseController {
     /**显示虚拟地址*/
     @Value("${file.upload.relative}")
     private String fileRelativePath;
+
+
+    @GetMapping("/list")
+    public List<Course> list(){
+
+        List<Course> list = courseService.list();
+        return list;
+    }
 
 
     @GetMapping("/getPage")

@@ -16,6 +16,10 @@ import java.util.List;
 @Mapper
 public interface ChapterMapper {
 
+    @Select("SELECT c1.id,c1.course_id,c2.name courseName,c1.name,c1.info,c1.video,c1.status" +
+            " FROM chapter c1 JOIN course c2 ON c1.course_id=c2.id where c1.course_id = #{courseId}")
+    List<Chapter> list(@Param("courseId") Integer courseId);
+
 
     @Select({"<script> SELECT c1.id,c1.course_id,c2.name courseName,c1.name,c1.info,c1.video,c1.status" +
             " FROM chapter c1 JOIN course c2 ON c1.course_id=c2.id where c1.course_id = #{courseId}"+

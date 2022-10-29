@@ -20,12 +20,16 @@ public class CourseService {
     @Autowired
     private CourseMapper courseMapper;
 
+
     /**
      * 分页
      * @param pageIndex
      * @param pageSize
      * @return
      */
+
+
+
     public Pages<Course> getPagers(Integer pageIndex,Integer pageSize,String courseName,String teacherName) {
 
 
@@ -68,5 +72,18 @@ public class CourseService {
     public void update(Course course) {
 
         courseMapper.update(course);
+    }
+
+    public List<Course> list() {
+        List<Course>  list = courseMapper.list();
+        for(Course course : list){
+            if(course.getAttribute().equals("1")){
+                course.setAttribute("公开课");
+            }else if(course.getAttribute().equals("2")){
+                course.setAttribute("标准课");
+            }
+        }
+
+        return list;
     }
 }

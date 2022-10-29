@@ -3,6 +3,7 @@ package com.example.wxclassserver.service;
 
 import com.example.wxclassserver.mapper.ChapterMapper;
 import com.example.wxclassserver.model.Chapter;
+import com.example.wxclassserver.model.Course;
 import com.example.wxclassserver.model.Pages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -54,9 +55,28 @@ public class ChapterService {
 
     }
 
+    public List<Chapter> list(Integer courseId) {
+        List<Chapter>  list = chapterMapper.list(courseId);
+        for(Chapter chapter : list){
+            if(chapter.getStatus().equals(0)){
+                chapter.setStatusInfo("未完成");
+            }else if(chapter.getStatus().equals(1)){
+                chapter.setStatusInfo("学习中");
+            }else if(chapter.getStatus().equals(2)){
+                chapter.setStatusInfo("已完成");
+            }
+        }
+
+        return list;
+    }
+
 
     public void add(Chapter chapter) {
         chapterMapper.add(chapter);
+    }
+
+    public void delete(Integer id) {
+        chapterMapper.delete(id);
     }
 
     public void update(Chapter chapter) {
