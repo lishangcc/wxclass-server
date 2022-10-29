@@ -9,6 +9,9 @@ import java.util.List;
 @Mapper
 public interface CourseMapper {
 
+    @Select("SELECT c.id,c.name,c.teacher_id,t.name teacherName,c.attribute,c.face_img,c.ks,c.add_time FROM course c left JOIN teacher t ON c.teacher_id=t.id")
+    List<Course> list();
+
     @Select({"<script> SELECT c.id,c.name,c.teacher_id,t.name teacherName,c.attribute,c.face_img,c.ks,c.add_time " +
             "FROM course c left JOIN teacher t ON c.teacher_id=t.id " +
             "<where>" +
