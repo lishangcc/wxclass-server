@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class GradeService {
@@ -18,5 +19,13 @@ public class GradeService {
 
     public List<Grade> selectHotGrade(){
         return  gradeMapper.selectHotGrade();
+    }
+
+    public int deleteGrade(int id){
+        return gradeMapper.deleteGrade(id);
+    }
+
+    public int modGradeInfo(Grade grade){
+        return gradeMapper.modGradeInfo(grade);
     }
 }

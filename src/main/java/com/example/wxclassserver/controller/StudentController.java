@@ -22,7 +22,7 @@ public class StudentController {
         return studentService.getAllStudent();
     }
     //根据学号查询学生信息
-    @RequestMapping("/getInfo")
+    @RequestMapping("/getStudentInfo")
     public Map<String,Object> getStudentInfo(int sno, ModelAndView modelAndView){
         Student student = studentService.getStudentBySno(sno);
         HashMap<String, Object> map = new HashMap<>();
@@ -30,14 +30,14 @@ public class StudentController {
         return map;
     }
     //修改学生信息
-    @RequestMapping("/modStudent")
+    @RequestMapping("/modStudentInfo")
     public Map<String, Object> modStudentBySno(Student student){
         int i = studentService.modStudentNameBySno(student);
         Map<String,Object> map = new HashMap<>();
         if(i==1){
-            map.put("modSuccessMsg","修改成功");
+            map.put("modSuccessMsg","修改学生信息成功");
         }else {
-            map.put("modErrMsg","修改失败");
+            map.put("modErrMsg","修改学生信息失败");
         }
         return map;
     }
@@ -47,9 +47,21 @@ public class StudentController {
         HashMap<String, Object> map = new HashMap<>();
         int i = studentService.deleteStudentBySno(student.getSno());
         if (i==1){
-            map.put("successMsg","删除成功");
+            map.put("successMsg","删除该学生成功");
         }else {
-            map.put("failureMsg","删除失败");
+            map.put("failureMsg","删除该学生失败");
+        }
+        return map;
+    }
+    //禁用学生
+    @RequestMapping("/disableStudent")
+    public Map<String,Object> modStudentToDisable(int sno){
+        int i = studentService.modStudentToDisable(sno);
+        HashMap<String, Object> map = new HashMap<>();
+        if (i==1){
+            map.put("successMsg","禁用该学生成功");
+        }else {
+            map.put("failureMsg","禁用该学生失败");
         }
         return map;
     }

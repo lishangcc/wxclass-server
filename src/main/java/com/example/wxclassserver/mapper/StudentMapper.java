@@ -29,4 +29,7 @@ public interface StudentMapper {
     //删除学生
     @Delete("delete from student where sno = #{sno}")
     int deleteStudentBySno(int sno);
+    //禁用学生
+    @Update("update student set status = 1 where sno = #{sno}")
+    int modStudentToDisable(int sno);
 }

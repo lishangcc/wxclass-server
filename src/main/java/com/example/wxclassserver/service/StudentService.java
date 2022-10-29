@@ -28,4 +28,8 @@ public class StudentService {
     public int deleteStudentBySno(int sno){
         return studentMapper.deleteStudentBySno(sno);
     }
+
+    public int modStudentToDisable(int sno){
+        return studentMapper.modStudentToDisable(sno);
+    }
 }
