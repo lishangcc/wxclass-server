@@ -3,29 +3,29 @@ package com.example.wxclassserver.controller;
 import com.example.wxclassserver.model.Grade;
 import com.example.wxclassserver.service.GradeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Controller
+@RestController
+@RequestMapping("/grade")
 public class GradeController {
     @Autowired
     private GradeService gradeService;
 
-    @RequestMapping("/getAllGrade")
+    @GetMapping("/getAllGrade")
     public List<Grade> getAllGrade(){
         return gradeService.selectAllGrade();
     }
 
-    @RequestMapping("/getHotGrade")
+    @GetMapping("/getHotGrade")
     public List<Grade> getHotGrade(){
         return gradeService.selectHotGrade();
     }
 
-    @RequestMapping("/deleteGrade")
+    @DeleteMapping("/deleteGrade")
     public Map<String,Object> deleteGrade(int id){
         int i = gradeService.deleteGrade(id);
         HashMap<String, Object> map = new HashMap<>();
@@ -37,7 +37,7 @@ public class GradeController {
         return map;
     }
 
-    @RequestMapping("/modGradeInfo")
+    @PostMapping("/modGradeInfo")
     public Map<String,Object> modGradeInfo(Grade grade){
         int i = gradeService.modGradeInfo(grade);
         HashMap<String, Object> map = new HashMap<>();

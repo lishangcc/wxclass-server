@@ -3,13 +3,11 @@ package com.example.wxclassserver.mapper;
 import com.example.wxclassserver.model.Student;
 import java.util.*;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 @Mapper
 public interface StudentMapper {
+
     //查询所有学生
     @Select("select sno, sname, sage, gender, grade, sphone, intro, status, smail from student")
     List<Student> selectAllStudent();

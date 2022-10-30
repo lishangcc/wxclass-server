@@ -1,28 +1,33 @@
 package com.example.wxclassserver.controller;
 
+import com.example.wxclassserver.model.Course;
+import com.example.wxclassserver.model.Pages;
 import com.example.wxclassserver.model.Student;
 import com.example.wxclassserver.service.StudentService;
 import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
 import java.util.Map;
-
-@Controller
+@RestController
+@RequestMapping("/student")
 public class StudentController {
 
     @Autowired
     private StudentService studentService;
+
     //查询所有学生
-    @RequestMapping("/getAllStudent")
+    @GetMapping("/getAllStudent")
     public List<Student> getAllStudent(){
-        return studentService.getAllStudent();
+        List<Student> allStudent = studentService.getAllStudent();
+        System.out.println(allStudent);
+        return allStudent;
     }
     //根据学号查询学生信息
-    @RequestMapping("/getStudentInfo")
+    @GetMapping("/getStudentInfo")
     public Map<String,Object> getStudentInfo(int sno, ModelAndView modelAndView){
         Student student = studentService.getStudentBySno(sno);
         HashMap<String, Object> map = new HashMap<>();
@@ -30,7 +35,7 @@ public class StudentController {
         return map;
     }
     //修改学生信息
-    @RequestMapping("/modStudentInfo")
+    @PostMapping("/modStudentInfo")
     public Map<String, Object> modStudentBySno(Student student){
         int i = studentService.modStudentNameBySno(student);
         Map<String,Object> map = new HashMap<>();
@@ -42,7 +47,7 @@ public class StudentController {
         return map;
     }
     //删除学生
-    @RequestMapping("/deleteStudent")
+    @DeleteMapping("/deleteStudent")
     public Map<String,Object> deleteStudentBySno(Student student){
         HashMap<String, Object> map = new HashMap<>();
         int i = studentService.deleteStudentBySno(student.getSno());
@@ -54,7 +59,7 @@ public class StudentController {
         return map;
     }
     //禁用学生
-    @RequestMapping("/disableStudent")
+    @PostMapping("/disableStudent")
     public Map<String,Object> modStudentToDisable(int sno){
         int i = studentService.modStudentToDisable(sno);
         HashMap<String, Object> map = new HashMap<>();
